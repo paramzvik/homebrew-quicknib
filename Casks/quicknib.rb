@@ -4,16 +4,15 @@ cask "quicknib" do
 
   url "https://github.com/paramzvik/notepad-macos/releases/download/v#{version}/QuickNib-#{version}-arm64.dmg"
   name "QuickNib"
-  desc "Lightweight macOS notepad with syntax highlighting"
+  desc "Lightweight notepad with syntax highlighting"
   homepage "https://github.com/paramzvik/notepad-macos"
 
   depends_on arch: :arm64
+  depends_on macos: :big_sur
 
   app "QuickNib.app"
 
   uninstall quit: "com.quicknib.app"
 
-  zap trash: [
-    "~/Library/Application Support/quicknib",
-  ]
+  zap trash: "~/Library/Application Support/quicknib"
 end
