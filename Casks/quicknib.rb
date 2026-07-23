@@ -1,6 +1,6 @@
 cask "quicknib" do
-  version "1.0.2"
-  sha256 "12991d1237efd2c34ba9d6c1f83f329639f1c070450f19067b609243ba5ca531"
+  version "1.0.3"
+  sha256 "6015b752566de8fa1c2a7c0c2969b3f9312be4cbda3c66ccd5c45494f4d244b2"
 
   url "https://github.com/paramzvik/notepad-macos/releases/download/v#{version}/QuickNib-#{version}-arm64.dmg"
   name "QuickNib"
@@ -13,8 +13,6 @@ cask "quicknib" do
   app "QuickNib.app"
 
   postflight do
-    system_command "/usr/bin/codesign",
-                   args: ["--force", "--deep", "--sign", "-", "#{appdir}/QuickNib.app"]
     system_command "/usr/bin/xattr",
                    args: ["-cr", "#{appdir}/QuickNib.app"]
   end
