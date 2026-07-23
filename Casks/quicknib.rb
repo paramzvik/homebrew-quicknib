@@ -12,6 +12,13 @@ cask "quicknib" do
 
   app "QuickNib.app"
 
+  postflight do
+    system_command "/usr/bin/codesign",
+                   args: ["--force", "--deep", "--sign", "-", "#{appdir}/QuickNib.app"]
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/QuickNib.app"]
+  end
+
   uninstall quit: "com.quicknib.app"
 
   zap trash: "~/Library/Application Support/quicknib"
